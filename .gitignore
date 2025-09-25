@@ -1,3 +1,7 @@
+# Project-Specific Exclusions (weather-app)
+# Ignore generated weather data files.
+data/*.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
