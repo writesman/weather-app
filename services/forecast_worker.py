@@ -3,6 +3,7 @@ from geopy.location import Location
 import requests
 from datetime import datetime
 from PyQt5.QtCore import QThread, pyqtSignal
+import os
 
 
 class ForecastWorker(QThread):
@@ -18,6 +19,11 @@ class ForecastWorker(QThread):
     def run(self) -> None:
         """The main method that runs when the thread starts"""
         try:
+            # Check and create the 'data' directory if it doesn't exist
+            data_dir = 'data'
+            if not os.path.exists(data_dir):
+                os.makedirs(data_dir) # Creates the directory
+
             # Step 1: Get location info from the API
             latitude = round(self.location.latitude, 4)
             longitude = round(self.location.longitude, 4)
